@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.bakery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(331px, 1fr));
+}
