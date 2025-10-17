@@ -13,13 +13,9 @@ const DesktopHeader = () => {
         setMenuOpen(!menuOpen);
     }
 
-    const closeMenu = () => {
-        setMenuOpen(false);
-    }
-
 
   return (
-    <div onClick={closeMenu} className="hidden xl:flex shadow-md container px-10 mx-auto h-[83px] items-center justify-between">
+    <div className="hidden xl:flex shadow-md container px-10 mx-auto h-[83px] items-center justify-between">
         {/* this is the logo and button section of the navbar */}
         <div className="flex items-center gap-4">
             <LogoImg />
