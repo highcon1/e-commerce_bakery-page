@@ -11,7 +11,7 @@ const HeroSection = () => {
             <HeroImage>
                 <HeroTextBlock />
                 <HeroSearchBar />
-                <FloatingCart />
+                {/* <FloatingCart /> */}
             </HeroImage>
         </div>
         

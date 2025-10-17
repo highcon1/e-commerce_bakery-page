@@ -10,7 +10,7 @@ const MiniHero = () => {
         <HeroImage variant="lg">
             <HeroTextBlock variant="lg" />
             <HeroSearchBar variant="lg" />
-            <FloatingCart />
+            {/* <FloatingCart /> */}
         </HeroImage>
     </div>
   )

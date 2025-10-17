@@ -4,7 +4,12 @@ import Paragraph from './Paragraph'
 import { PlusIcon } from './Icons'
 
 
-const PdCard = ({discPercent, imgUrl, prdName, price, oldPrice, disp}) => {
+const PdCard = ({discPercent, imgUrl, prdName, price, oldPrice, disp, dataCatId, addToCart}) => {
+
+    const handleEvents = (e) => {
+        addToCart(e.target.id);
+    }
+
   return (
     <Card className="relative h-[330px] rounded-sm shadow-md p-4  flex flex-col gap-3 bg-white overflow-hidden cursor-pointer select-none hover:scale-102 transition-transform duration-300">
         {/* section for the product image */}
@@ -13,13 +18,13 @@ const PdCard = ({discPercent, imgUrl, prdName, price, oldPrice, disp}) => {
         </div>
         
         {/* section for the discount and quantity */}
-        <Card className="absolute top-4 flex items-center justify-between w-[260px] px-2">
+        <Card className="absolute top-4 flex items-center justify-between w-[90%] px-2">
             <span className={`w-[44px] h-[25px] bg-[#009F7F] rounded-sm flex items-center justify-center ${disp}`}>
                 <Paragraph className="text-[12px] text-white" text={discPercent || "50%"} ></Paragraph>
             </span>
 
-            <span className='w-[35px] h-[37px] border-1 border-gray-300 flex items-center justify-center rounded-sm hover:bg-[#009F7F]'>
-                <PlusIcon strokeWidth="1.5" className="hover:text-white w-7 h-7"></PlusIcon>
+            <span onClick={(e) => {handleEvents(e)}} className='w-[35px] h-[37px] border-1 border-gray-300 flex items-center justify-center rounded-sm hover:bg-[#009F7F]'>
+                <PlusIcon strokeWidth="1.5" className="hover:text-white w-7 h-7" id={dataCatId}></PlusIcon>
             </span>
         </Card>
 

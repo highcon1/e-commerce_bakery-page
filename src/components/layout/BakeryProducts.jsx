@@ -1,16 +1,15 @@
 import React from 'react'
 import PdCard from '../ui/PdCard'
-import allProductsCatls from "../../data/bakeryProducts.js"
 
-const BakeryProducts = () => {
+const BakeryProducts = ({products = [], onAddToCart}) => {
   return (
     <div className='bakery-grid gap-3 px-7'>
         {
-            allProductsCatls.map((bkPdObj, index) => {
-                const showObj = bkPdObj.discount ? "visible" : "invisible";
-                return (<PdCard key={index} discPercent={bkPdObj.discountedP} imgUrl={bkPdObj.url}
-                    prdName={bkPdObj.name} price={bkPdObj.price} oldPrice={bkPdObj.discountedPrc}
-                    disp={showObj} data-catid={bkPdObj.catId}></PdCard>)
+            products.map((product, index) => {
+                const showObj = product.discount ? "visible" : "invisible";
+                return (<PdCard key={index} discPercent={product.discountedP} imgUrl={product.url}
+                    prdName={product.name} price={product.price} oldPrice={product.discountedPrc}
+                    disp={showObj} dataCatId={index} addToCart={onAddToCart} ></PdCard>)
             })
         }
     </div>
