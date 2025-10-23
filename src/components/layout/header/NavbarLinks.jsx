@@ -1,23 +1,37 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const NavbarLinks = () => {
     const pagesDropdown = [
-        "Flash Sale",
-        "Manufacturers/Publishers",
-        "Authors",
-        "FAQ",
-        "Terms & Conditions",
-        "Customer Refund Policy",
-        "Vendor Refund Policy",
+        { title: "Flash Sale", link: "/flash_sale" },
+        { title: "Manufacturers/Publishers", link: "/manufacturers_publishers" },
+        { title: "Authors", link: "/authors" },
+        { title: "FAQ", link: "/faq" },
+        { title: "Terms & Conditions", link: "/terms_conditions" },
+        { title: "Customer Refund Policy", link: "/customer_refund_policy" },
+        { title: "Vendor Refund Policy", link: "/vendor_refund_policy" },
     ];
+    const links = [
+        {
+            name: "Shops",
+            link: "/shops"
+        },
+        {
+            name: "Offers",
+            link: "/offers" 
+        },
+        {
+            name: "Contact",
+            link: "/contact"    
+        }
+    ]
 
-    const links = ["Shops", "Offers", "Contact"];
     return (
         <ul className="flex gap-10">
             {
                 links.map((link, index) => (
                     <li key={index}>
-                        <a href="" className="hover:text-[#009F7F]">{link}</a>
+                        <Link to={link.link} className="hover:text-[#009F7F]">{link.name}</Link>
                     </li>
                 ))
             }
@@ -32,7 +46,7 @@ const NavbarLinks = () => {
                         {
                             pagesDropdown.map((dropdownmenu, index) => (
                                 <li key={index}>
-                                    <a href="" className="inline-block hover:text-[#009F7F] transform transition-all duration-200 ease-in-out hover:translate-x-1 hover:scale-105">{dropdownmenu}</a>
+                                    <Link to={dropdownmenu.link} className="inline-block hover:text-[#009F7F] transform transition-all duration-200 ease-in-out hover:translate-x-1 hover:scale-105">{dropdownmenu.title}</Link>
                                 </li>
                             ))
                         }

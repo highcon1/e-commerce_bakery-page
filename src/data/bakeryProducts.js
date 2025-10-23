@@ -656,6 +656,9 @@ const allProductsCatls = [
         discountedP: null,
         discountedPrc: null,
     }
-];
+].map((item, index) => ({
+    ...item,
+    id: index + 1
+}));
 
 export default allProductsCatls;
