@@ -4,14 +4,16 @@ import Paragraph from './Paragraph'
 import { MinusIcon, PlusIcon } from './Icons'
 
 
-const PdCard = ({func, discPercent, imgUrl, prdName, price, oldPrice, disp, dataCatId, addToCart, qtyControl, qty, remFromCart}) => {
+const PdCard = ({func, discPercent, imgUrl, prdName, price, oldPrice, disp, addToCart, qtyControl, qty, remFromCart}) => {
 
-    const handleAdd = () => {
-        addToCart(dataCatId);
+    const handleAdd = (e) => {
+        e.stopPropagation();
+        addToCart();
     }
 
-    const handleRemove = () => {
-        remFromCart(dataCatId);
+    const handleRemove = (e) => {
+        e.stopPropagation();
+        remFromCart();
     }
 
 
@@ -29,12 +31,12 @@ const PdCard = ({func, discPercent, imgUrl, prdName, price, oldPrice, disp, data
             </span>
 
             {!qtyControl ? (<span onClick={handleAdd} className='w-[35px] h-[37px] border-1 border-gray-300 flex items-center justify-center rounded-sm hover:bg-[#009F7F]'>
-                <PlusIcon strokeWidth="1.5" className="hover:text-white w-7 h-7" data-id={dataCatId}></PlusIcon>
+                <PlusIcon strokeWidth="1.5" className="hover:text-white w-7 h-7"></PlusIcon>
             </span>) : 
             (<span className='flex w-[98px] h-[37px] bg-[#009F7F] rounded-md items-center justify-around text-white'>
                 <span onClick={handleRemove} className='w-[30px] h-full flex items-center justify-center hover:bg-[#019376] rounded-l-md'><MinusIcon className="w-4 h-5" /></span>
                 <span className='w-[34px] h-full flex items-center justify-center'><Paragraph className="flex items-center justify-center" text={qty || 0}></Paragraph></span>
-                <span onClick={handleAdd} className='w-[30px] h-full flex items-center justify-center hover:bg-[#019376] rounded-r-md'><PlusIcon data-id={dataCatId} className="w-5 h-5" /></span>
+                <span onClick={handleAdd} className='w-[30px] h-full flex items-center justify-center hover:bg-[#019376] rounded-r-md'><PlusIcon className="w-5 h-5" /></span>
             </span>)}
         </Card>
 

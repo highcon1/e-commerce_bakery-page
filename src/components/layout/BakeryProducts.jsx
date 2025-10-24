@@ -2,10 +2,17 @@ import PdCard from '../ui/PdCard'
 import {useNavigate, useLocation} from 'react-router-dom';
 import { NotFoundIcon } from '../ui/Icons'
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItemToCart, removeItemFromCart } from '../../redux/reducers/cartSlice';
 
-const BakeryProducts = ({products = [], onAddToCart, cartItems, remFromCart}) => {
+const BakeryProducts = ({products = []}) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const carts = useSelector((state) => state.carts)
+  const cartItems = carts.items;
+  const dispatch = useDispatch();
+
+
   
   //pagination code here
   const [visibleCount, setVisibleCount] = useState(20);
@@ -33,24 +40,23 @@ const BakeryProducts = ({products = [], onAddToCart, cartItems, remFromCart}) =>
     <>
     <div className='bakery-grid gap-3 px-7 bg-[#F3F4F6]'>
         {
-            visibleProducts.map((product, index) => {
+            visibleProducts.map((product) => {
               const showObj = product.discount ? "visible" : "invisible";
-              const qtyControl = cartItems.find((item) => Number(item.id) === index);
-              const itemQuantity = qtyControl ? qtyControl.qty : 0
+              const findProduct = cartItems.find((item) => Number(item.id) === product.id);
+              const itemQuantity = findProduct ? findProduct.quantity : 0
                 return (<PdCard
                         func={() => openDetailPage(product.id)} 
-                        key={index} 
+                        key={product.id} 
                         discPercent={product.discountedP} 
                         imgUrl={product.url}
                         prdName={product.name} 
                         price={product.price} 
                         oldPrice={product.discountedPrc}
                         disp={showObj}  
-                        addToCart={onAddToCart} 
-                        dataCatId={index}
-                        qtyControl={qtyControl}
+                        addToCart={() => dispatch(addItemToCart(product))}
+                        qtyControl={findProduct}
                         qty={itemQuantity}
-                        remFromCart={remFromCart}
+                        remFromCart={() => dispatch(removeItemFromCart(product))}
                       />)
                 })
         }

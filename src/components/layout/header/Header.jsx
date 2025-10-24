@@ -5,8 +5,10 @@ import LargeHeader from "./LargeHeader.jsx";
 import DesktopHeader from "./DesktopHeader.jsx";
 import MiniHero from "../hero/MiniHero.jsx";
 import FilterNavbar from '../../ui/FilterNavbar.jsx'
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const theme = useSelector((state) => state.theme.mode);
 
   return (
     <>
@@ -36,7 +38,7 @@ const Header = () => {
       </div>
       </>
 
-      <div className="sticky top-0 z-50 bg-white">
+      <div className={`sticky top-0 z-50 ${theme === "light" ? "bg-white" : "dark:bg-gray-900 dark:text-gray-100"}`}>
         {/* extra large screen here */}
         <DesktopHeader />
       </div>
