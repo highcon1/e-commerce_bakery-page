@@ -44,10 +44,10 @@ const DesktopHeader = () => {
                     <Link to="/sellers">Become a Seller</Link>
                 </Button>
 
-                <div>
+                {/* <div>
                     <ToggleButton darkMode={darkMode}
                         onToggle={() => dispatch(toggleMode())} />
-                </div>
+                </div> */}
             </div>
         </div>
     </div>
