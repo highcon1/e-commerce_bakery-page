@@ -3,7 +3,7 @@ import { CancelIcon, MinusIcon, PlusIcon } from './Icons'
 import Button from './Button';
 import Paragraph from './Paragraph';
 
-const CartItemCard = ({quantity, name, itemPrice, itemTotalPrice, imgUrl, addToCart, remFromCart}) => {
+const CartItemCard = ({quantity, name, itemPrice, itemTotalPrice, imgUrl, addToCart, remFromCart, remItemFromCart }) => {
   return (
     <>
         <div className='h-[125px] flex items-center justify-around px-4 shadow-sm'>
@@ -23,7 +23,7 @@ const CartItemCard = ({quantity, name, itemPrice, itemTotalPrice, imgUrl, addToC
             <span>
                 <Paragraph text={`$${itemTotalPrice}` || '$1.50'}/>
             </span>
-            <Button className='cursor-pointer'>
+            <Button className='cursor-pointer' onClick={remItemFromCart}>
                 <CancelIcon className='w-3 h-3' />
             </Button>       
         </div>
